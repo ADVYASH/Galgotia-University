@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Galgotia University - Student Subject Registration</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #ffffff;
+    color: #000;
+  }
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+  }
+  /* Header with logo */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .logo {
+    height: 80px;
+    margin-right: 20px;
+  }
+  h1, h2 {
+    text-align: center;
+    color: #000;
+  }
+  /* Student details styling */
+  .student-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+  }
+  .student-photo {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #000;
+  }
+  .details {
+    line-height: 1.6;
+  }
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  table, th, td {
+    border: 1px solid #000;
+  }
+  th {
+    background-color: #000;
+    color: #fff;
+  }
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  /* Button styling */
+  .register-btn {
+    display: block;
+    width: 220px;
+    margin: 30px auto;
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .register-btn:hover {
+    background-color: #333;
+  }
+  /* Total price display */
+  #totalPrice {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- University Logo and Title -->
+  <div class="header">
+    <img src="https://cdn.discordapp.com/attachments/1425481129611235356/1437479030545973328/Galgotias-University-Logo-300x174.png?ex=6913642b&is=691212ab&hm=fa2a1911851db76892bf78d70012ea80cf7684f398eb25e46f62e6f18e164082&" alt="University Logo" class="logo" />
+    <h1>Student Subject Registration</h1>
+  </div>
+  
+  <!-- Student Details -->
+  <h2>Student Details</h2>
+  <div class="student-details">
+    <img src="https://cdn.discordapp.com/attachments/1425481129611235356/1437477032836464763/575842025_2655613081485282_7731329331765492988_n.jpg?ex=6913624f&is=691210cf&hm=127f7b6fd6dff0a97d6e6fb762995fa906f8c04d933c9144828cdc9c812acdfa&" alt="Student Photo" class="student-photo" />
+    <div class="details">
+      <p><strong>Name:</strong> Yash Kumar</p>
+      <p><strong>Admission ID:</strong> 23GSOL1030102</p>
+      <p><strong>Date of Birth:</strong> 23/06/2004</p>
+      <p><strong>Session:</strong> 2023-2028</p>
+      <p><strong>Father's Name:</strong> Charan Singh</p>
+      <p><strong>Mother's Name:</strong> Meena Devi</p>
+      <p><strong>Course:</strong> Bachelor of Business Administration & Bachelor of Law</p>
+      <p><strong>Semester:</strong> 6</p>
+    </div>
+  </div>
+  
+  <!-- Subjects Table -->
+  <h2>Available Subjects for Registration</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Subject Code</th>
+        <th>Subject Name</th>
+        <th>Price (INR)</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Existing subjects -->
+      <tr>
+        <td>GEB101</td>
+        <td>Principles of Management</td>
+        <td>2000</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="2000"></td>
+      </tr>
+      <tr>
+        <td>GEB102</td>
+        <td>Business Ethics</td>
+        <td>1800</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="1800"></td>
+      </tr>
+      <tr>
+        <td>GEB103</td>
+        <td>Financial Accounting</td>
+        <td>2200</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="2200"></td>
+      </tr>
+      <tr>
+        <td>GEB104</td>
+        <td>Legal Aspects of Business</td>
+        <td>2500</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="2500"></td>
+      </tr>
+      <tr>
+        <td>GEB105</td>
+        <td>Marketing Management</td>
+        <td>2100</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="2100"></td>
+      </tr>
+      <!-- New subjects -->
+      <tr>
+        <td>J1S603</td>
+        <td>Human Rights and International Law</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S604</td>
+        <td>Land Laws</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S605</td>
+        <td>Labor Laws</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S606</td>
+        <td>Environmental Law</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S607</td>
+        <td>Code of Criminal Procedure, Juvenile Justice Act & Probation Offenders Act</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S608</td>
+        <td>Insurance Law</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S609</td>
+        <td>Banking Laws</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S610</td>
+        <td>IPR</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S611</td>
+        <td>Trust & Equity</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S612</td>
+        <td>Taxation Law</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S613</td>
+        <td>Property Laws including Transfer of Property Act & Easement Act</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S614</td>
+        <td>Arbitration, Conciliation & Alternate Dispute Resolution System</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>J1S615</td>
+        <td>Code of Civil Procedure Limitation Act</td>
+        <td>5580</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="5580"></td>
+      </tr>
+      <tr>
+        <td>H1S616</td>
+        <td>Comparative Laws</td>
+        <td>4720</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="4720"></td>
+      </tr>
+      <tr>
+        <td>H1S617</td>
+        <td>Drafting, Pleading and Conveyancing</td>
+        <td>4720</td>
+        <td><input type="checkbox" class="subject-checkbox" data-price="4720"></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Total Price Display -->
+  <div id="totalPrice">Total Price: 0 INR</div>
+  
+  <!-- Register Button -->
+  <button class="register-btn" onclick="registerSubjects()">Register Selected Subjects</button>
+</div>
+
+<script>
+  // Function to calculate total price
+  function updateTotal() {
+    const checkboxes = document.querySelectorAll('.subject-checkbox');
+    let total = 0;
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        total += parseInt(cb.getAttribute('data-price'));
+      }
+    });
+    document.getElementById('totalPrice').innerText = 'Total Price: ' + total + ' INR';
+  }
+
+  // Attach event listeners to checkboxes
+  document.querySelectorAll('.subject-checkbox').forEach(cb => {
+    cb.addEventListener('change', updateTotal);
+  });
+
+  // Function to handle registration
+  function registerSubjects() {
+    const checkboxes = document.querySelectorAll('.subject-checkbox');
+    const selectedSubjects = [];
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        selectedSubjects.push(cb.value);
+      }
+    });
+    alert('Subjects registered successfully!\nSelected subjects: ' + (selectedSubjects.join(', ') || 'None'));
+  }
+</script>
+
+</body>
+</html>
