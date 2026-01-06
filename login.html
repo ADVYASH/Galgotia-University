@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login - Galgotias University</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* Styles for login container */
+    .login-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        width: 300px;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #cc0000;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #cc0000;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #a30000;
+    }
+
+    .error {
+        color: red;
+        margin-top: 10px;
+        font-size: 0.9em;
+    }
+
+    /* Styles for portal page and background video */
+    #portalPage {
+        display: none; /* Hidden initially */
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    /* Overlay content styles */
+    .overlay {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        color: white;
+        text-align: center;
+        background-color: rgba(255, 0, 0, 0.3);
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+
+    /* Heading style */
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+
+    /* Logout Button */
+    .logout-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #a30000;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s;
+        z-index: 2;
+    }
+
+    .logout-btn:hover {
+        background-color: #8b0000;
+    }
+
+    /* Navigation bar styles with red theme */
+    .navbar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: rgba(255, 0, 0, 0.8);
+        padding: 10px 0;
+        margin-top: 10px;
+        backdrop-filter: blur(4px);
+        z-index: 1;
+        position: sticky;
+        top: 0;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 5px 10px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s;
+        font-size: 0.9em;
+    }
+
+    .navbar a:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Student Blocks Container */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .block {
+        background-color: white;
+        width: 200px;
+        height: 150px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .block:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Login Box -->
+<div class="login-container" id="loginBox">
+    <h2>Student Login</h2>
+    <form id="loginForm">
+        <input type="text" id="userId" placeholder="ID" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <div class="error" id="errorMsg"></div>
+    </form>
+</div>
+
+<!-- Student Portal Content (hidden initially) -->
+<div id="portalPage">
+    <!-- Background Video -->
+    <video autoplay muted loop class="video-background">
+        <!-- Replace with your background video path -->
+        <source src="your-video-file.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay Content -->
+    <div class="overlay">
+        <h1>Welcome to Galgotias University</h1>
+        <p>Discover excellence in education and innovation at Galgotias University.</p>
+
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <a href="#profile">👤 Profile</a>
+            <a href="#attendance">📝 Attendance</a>
+            <a href="#timetable">📅 Timetable</a>
+            <a href="fee.html">💰 Fees</a>
+            <a href="#holidays">🎉 Holidays</a>
+            <a href="#notification">🔔 Notification</a>
+            <a href="#enrollment">📝 Enrollment</a>
+            <a href="#feedback">📝 Feedback</a>
+            <a href="#undertaking">📝 Undertaking</a>
+            <a href="#grievance">⚠️ Grievance</a>
+            <a href="#mentorship">🎓 Mentorship</a>
+            <a href="#neft-form">💳 NEFT Form</a>
+            <a href="#performance">📊 Performance</a>
+            <a href="#request-center">📝 Request Center</a>
+            <a href="#admit-card">📝 Admit Card</a>
+            <a href="#exam-form">📝 Exam Form</a>
+            <a href="#report-card">📄 Report Card</a>
+            <a href="#seating-plan">🪑 Seating Plan</a>
+        </div>
+
+        <!-- Feature Blocks -->
+        <div class="container">
+            <div class="block"><a href="#profile"><div class="icon">👤</div>Profile</a></div>
+            <div class="block"><a href="#attendance"><div class="icon">📝</div>Attendance</a></div>
+            <div class="block"><a href="#timetable"><div class="icon">📅</div>Timetable</a></div>
+            <div class="block"><a href="fee.html"><div class="icon">💰</div>Fees</a></div>
+            <div class="block"><a href="#holidays"><div class="icon">🎉</div>Holidays</a></div>
+            <div class="block"><a href="#notification"><div class="icon">🔔</div>Notification</a></div>
+            <div class="block"><a href="#enrollment"><div class="icon">📝</div>Enrollment</a></div>
+            <div class="block"><a href="#feedback"><div class="icon">📝</div>Feedback</a></div>
+            <div class="block"><a href="#undertaking"><div class="icon">📝</div>Undertaking</a></div>
+            <div class="block"><a href="#grievance"><div class="icon">⚠️</div>Grievance</a></div>
+            <div class="block"><a href="#mentorship"><div class="icon">🎓</div>Mentorship</a></div>
+            <div class="block"><a href="#neft-form"><div class="icon">💳</div>NEFT Form</a></div>
+            <div class="block"><a href="#performance"><div class="icon">📊</div>Performance</a></div>
+            <div class="block"><a href="#request-center"><div class="icon">📝</div>Request Center</a></div>
+            <div class="block"><a href="#admit-card"><div class="icon">📝</div>Admit Card</a></div>
+            <div class="block"><a href="#exam-form"><div class="icon">📝</div>Exam Form</a></div>
+            <div class="block"><a href="#report-card"><div class="icon">📄</div>Report Card</a></div>
+            <div class="block"><a href="#seating-plan"><div class="icon">🪑</div>Seating Plan</a></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle login validation
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const userId = document.getElementById('userId').value.trim();
+        const pass = document.getElementById('password').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+
+        if (userId === '23gsol1030101' && pass === 'GU@54321') {
+            // Show portal page
+            document.getElementById('loginBox').style.display = 'none';
+            document.getElementById('portalPage').style.display = 'block';
+        } else {
+            errorMsg.textContent = 'Invalid ID or Password!';
+        }
+    });
+
+    // Handle logout
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        document.getElementById('portalPage').style.display = 'none';
+        document.getElementById('loginBox').style.display = 'block';
+        document.getElementById('userId').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('errorMsg').textContent = '';
+    });
+</script>
+
+</body>
+</html>
