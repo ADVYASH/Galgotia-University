@@ -11,50 +11,21 @@
         height: 100%;
         font-family: Arial, sans-serif;
         overflow: hidden;
-        background-color: #ffffff; /* White background as default */
+        background-color: #ffffff; /* fallback background */
+        position: relative;
     }
 
-    /* Background Video as the full background */
-    .video-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
+    /* GIF background using CSS background-image */
+    body {
+        background-image: url('https://media.giphy.com/media/your-giphy-link/giphy.gif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
-    /* Navigation bar styles with red theme */
-    .navbar {
-        position: fixed;
-        top: 20px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background: rgba(255, 0, 0, 0.8); /* Semi-transparent red */
-        padding: 10px 0;
-        z-index: 1;
-        backdrop-filter: blur(4px);
-    }
-
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        padding: 8px 12px;
-        border-radius: 4px;
-        font-weight: bold;
-        background-color: transparent;
-        transition: background-color 0.3s;
-    }
-
-    /* Hover effect for buttons */
-    .navbar a:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Overlay content with white text and red accents */
+    /* No overlay needed */
+    /* Remove or comment out the overlay styles */
+    /* 
     .overlay {
         position: relative;
         height: 100vh;
@@ -65,14 +36,42 @@
         color: white;
         text-align: center;
         padding: 20px;
-        z-index: 0;
-        background-color: rgba(255, 0, 0, 0.3); /* Light red overlay for contrast */
+        z-index: 1; 
+        background-color: rgba(255, 0, 0, 0.3); 
+    }
+    */
+
+    /* Navigation bar styles with red theme */
+    .navbar {
+        position: fixed;
+        top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background: rgba(255, 0, 0, 0.8);
+        padding: 10px 0;
+        z-index: 2;
+        backdrop-filter: blur(4px);
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    /* Hover effect for buttons */
+    .navbar a:hover {
+        background-color: rgba(255, 255, 255, 0.3);
     }
 
     /* Heading style */
     h1 {
         font-size: 3em;
-        color: #ffffff;
         margin-bottom: 20px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     }
@@ -86,12 +85,6 @@
 </head>
 <body>
 
-<!-- Background Video -->
-<video autoplay muted loop class="video-background">
-    <source src="background.mp4.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-</video>
-
 <!-- Navigation Buttons -->
 <div class="navbar">
     <a href="login.html">Login</a>
@@ -102,11 +95,8 @@
     <a href="#career">Career</a>
 </div>
 
-<!-- Overlay Content -->
-<div class="overlay">
-    <h1>Welcome to Galgotias University</h1>
-    <p>Discover excellence in education and innovation at Galgotias University.</p>
-</div>
+<!-- Content (if any) -->
+<!-- You can add content here if needed -->
 
 </body>
 </html>
