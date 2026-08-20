@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galgotias University - Student Fee Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Roboto,Arial,sans-serif;
+    background:#eef1f5;
+    color:#222;
+    font-size:14px;
+}
+
+a{
+    color:inherit;
+}
+
+/* =========================
+   TOP GOVERNMENT-STYLE BAR
+========================= */
+
+.topbar{
+    background:#1d3557;
+    color:white;
+    min-height:34px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+    font-size:12px;
+}
+
+.topbar-left{
+    display:flex;
+    gap:20px;
+}
+
+.topbar-right{
+    display:flex;
+    gap:18px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.main-header{
+    background:#fff;
+    border-bottom:4px solid #e0a800;
+    padding:14px 35px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    width:62px;
+    height:62px;
+    border:1px solid #bbb;
+    background:#f5f5f5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    font-weight:700;
+    color:#1d3557;
+    text-align:center;
+}
+
+.brand-text h1{
+    margin:0;
+    font-size:22px;
+    color:#1d3557;
+    font-weight:700;
+}
+
+.brand-text p{
+    margin:4px 0 0;
+    color:#666;
+    font-size:12px;
+}
+
+.portal-title{
+    text-align:right;
+}
+
+.portal-title h2{
+    margin:0;
+    color:#1d3557;
+    font-size:19px;
+}
+
+.portal-title p{
+    margin:5px 0 0;
+    color:#777;
+    font-size:12px;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+    background:#294c77;
+    color:white;
+    padding:0 35px;
+}
+
+.nav-inner{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+}
+
+.nav-item{
+    padding:12px 18px;
+    font-size:13px;
+    border-right:1px solid rgba(255,255,255,.15);
+}
+
+.nav-item.active{
+    background:#1d3557;
+    font-weight:600;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.container{
+    width:94%;
+    max-width:1400px;
+    margin:22px auto 50px;
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb{
+    background:white;
+    border:1px solid #d7dce2;
+    padding:10px 14px;
+    margin-bottom:18px;
+    color:#666;
+    font-size:12px;
+}
+
+.breadcrumb strong{
+    color:#1d3557;
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title{
+    background:#fff;
+    border:1px solid #d7dce2;
+    border-left:5px solid #1d3557;
+    padding:14px 18px;
+    margin-bottom:18px;
+}
+
+.page-title h2{
+    margin:0;
+    color:#1d3557;
+    font-size:20px;
+}
+
+.page-title p{
+    margin:5px 0 0;
+    color:#777;
+    font-size:12px;
+}
+
+/* =========================
+   STUDENT INFORMATION
+========================= */
+
+.section{
+    background:white;
+    border:1px solid #d7dce2;
+    margin-bottom:20px;
+}
+
+.section-heading{
+    background:#e9edf2;
+    border-bottom:1px solid #d1d7de;
+    padding:11px 15px;
+    font-size:15px;
+    font-weight:600;
+    color:#1d3557;
+}
+
+.profile{
+    display:flex;
+    gap:22px;
+    padding:20px;
+}
+
+.photo-box{
+    width:115px;
+    flex-shrink:0;
+}
+
+.profile img{
+    width:110px;
+    height:140px;
+    object-fit:cover;
+    border:1px solid #777;
+    padding:2px;
+    background:white;
+}
+
+.photo-caption{
+    margin-top:6px;
+    text-align:center;
+    color:#777;
+    font-size:10px;
+}
+
+.profile-details{
+    flex:1;
+}
+
+.name{
+    display:inline-block;
+    background:#1d3557;
+    color:white;
+    padding:7px 14px;
+    margin:0 0 15px;
+    font-size:16px;
+    font-weight:500;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    border-top:1px solid #ddd;
+    border-left:1px solid #ddd;
+}
+
+.info-item{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    border-right:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    min-height:38px;
+}
+
+.info-label{
+    background:#f4f6f8;
+    padding:10px;
+    font-weight:600;
+    color:#444;
+}
+
+.info-value{
+    padding:10px;
+    color:#222;
+}
+
+/* =========================
+   FEE SUMMARY
+========================= */
+
+.fee-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    padding:18px;
+}
+
+.fee-card{
+    background:#fff;
+    border:1px solid #d5dbe1;
+    min-height:110px;
+    padding:15px;
+}
+
+.fee-card h4{
+    margin:0 0 18px;
+    color:#555;
+    font-size:13px;
+    font-weight:500;
+}
+
+.amount{
+    color:#1d3557;
+    font-size:20px;
+    font-weight:700;
+}
+
+.highlight{
+    background:#1d3557;
+    border-color:#1d3557;
+}
+
+.highlight h4,
+.highlight .amount{
+    color:white;
+}
+
+/* =========================
+   FEE BILL
+========================= */
+
+.bill-section{
+    background:white;
+    border:1px solid #d7dce2;
+    margin-top:20px;
+}
+
+.bill-header{
+    background:#1d3557;
+    color:white;
+    padding:13px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.bill-header h3{
+    margin:0;
+    font-size:16px;
+}
+
+.bill-header span{
+    font-size:12px;
+}
+
+.bill{
+    padding:20px;
+}
+
+.bill-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.bill-table th{
+    background:#e9edf2;
+    color:#1d3557;
+    font-weight:600;
+    text-align:left;
+    border:1px solid #ccd3da;
+    padding:11px;
+}
+
+.bill-table td{
+    border:1px solid #d5dbe1;
+    padding:12px 11px;
+}
+
+.bill-table td:last-child,
+.bill-table th:last-child{
+    text-align:right;
+}
+
+.bill-table tr:nth-child(even){
+    background:#fafbfc;
+}
+
+.discount{
+    color:#198754;
+    font-weight:600;
+}
+
+.total-row td{
+    background:#f0f3f6;
+    font-weight:700;
+    font-size:16px;
+}
+
+.total-row td:last-child{
+    color:#1d3557;
+    font-size:19px;
+}
+
+/* =========================
+   PAYMENT AREA
+========================= */
+
+.payment-area{
+    border-top:1px solid #d7dce2;
+    margin-top:20px;
+    padding-top:20px;
+    text-align:center;
+}
+
+.payment-note{
+    color:#666;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.paybtn{
+    background:#1d3557;
+    color:white;
+    border:0;
+    padding:12px 35px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border-radius:3px;
+}
+
+.paybtn:hover{
+    background:#14263f;
+}
+
+#qrbox{
+    display:none;
+    margin:25px auto 5px;
+    width:320px;
+    background:#fff;
+    border:1px solid #ccd3da;
+    padding:20px;
+}
+
+#qrbox h3{
+    color:#1d3557;
+    margin:0 0 12px;
+}
+
+#qrbox img{
+    width:220px;
+    height:220px;
+    display:block;
+    margin:auto;
+}
+
+#qrbox p{
+    color:#666;
+    font-size:12px;
+    margin:12px 0 0;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+    margin-top:18px;
+    background:#fff8e1;
+    border:1px solid #ead28b;
+    border-left:4px solid #d39e00;
+    padding:12px 15px;
+    color:#604f16;
+    font-size:12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#1d3557;
+    color:white;
+    margin-top:40px;
+}
+
+.footer-inner{
+    width:94%;
+    max-width:1400px;
+    margin:auto;
+    padding:20px 0;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-left{
+    font-size:12px;
+    line-height:1.7;
+}
+
+.footer-right{
+    text-align:right;
+    font-size:11px;
+    color:#dbe3ed;
+}
+
+.footer-bottom{
+    background:#14263f;
+    text-align:center;
+    padding:9px;
+    font-size:11px;
+    color:#ccd6e1;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .topbar{
+        padding:8px 15px;
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .main-header{
+        padding:12px 15px;
+    }
+
+    .brand-text h1{
+        font-size:17px;
+    }
+
+    .portal-title{
+        display:none;
+    }
+
+    .navbar{
+        padding:0 15px;
+        overflow-x:auto;
+    }
+
+    .nav-inner{
+        min-width:max-content;
+    }
+
+    .container{
+        width:96%;
+    }
+
+    .profile{
+        flex-direction:column;
+    }
+
+    .photo-box{
+        margin:auto;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .fee-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .fee-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-item{
+        grid-template-columns:120px 1fr;
+    }
+
+    .bill{
+        padding:10px;
+        overflow-x:auto;
+    }
+
+    .bill-table{
+        min-width:600px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+    }
+
+    .footer-right{
+        text-align:left;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="topbar">
+
+    <div class="topbar-left">
+        <span>Student Services</span>
+        <span>Academic Session 2026-27</span>
+    </div>
+
+    <div class="topbar-right">
+        <span>Help</span>
+        <span>Contact</span>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="main-header">
+
+        <div class="brand-text">
+
+            <h1>Galgotias University</h1>
+
+            <p>
+                Student Fee Management System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="portal-title">
+
+        <h2>Student Fee Portal</h2>
+
+        <p>Online Fee Payment & Statement</p>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <div class="nav-inner">
+
+        <div class="nav-item active">
+            Student Dashboard
+        </div>
+
+        <div class="nav-item">
+            Fee Details
+        </div>
+
+        <div class="nav-item">
+            Fee Statement
+        </div>
+
+        <div class="nav-item">
+            Payment History
+        </div>
+
+        <div class="nav-item">
+            Support
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+
+    <!-- BREADCRUMB -->
+
+    <div class="breadcrumb">
+
+        Home &nbsp; / &nbsp;
+        Student Services &nbsp; / &nbsp;
+        <strong>Fee Portal</strong>
+
+    </div>
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+        <h2>
+            Student Fee Details
+        </h2>
+
+        <p>
+            View outstanding fees and make an online payment.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         STUDENT INFORMATION
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+            Student Information
+        </div>
+
+
+        <div class="profile">
+
+
+            <div class="photo-box">
+
+                <img
+                    src="passportsize.jpg"
+                    alt="Student Photograph"
+                >
+
+                <div class="photo-caption">
+                    Student Photograph
+                </div>
+
+            </div>
+
+
+            <div class="profile-details">
+
+                <h3 class="name">
+                    Yash Kumar
+                </h3>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Admission No.
+                        </div>
+
+                        <div class="info-value">
+                            23GSOL1030102
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            PRN
+                        </div>
+
+                        <div class="info-value">
+                            23101030089
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Class
+                        </div>
+
+                        <div class="info-value">
+                            BBALLB III 2026-2027 Sem VII
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Division
+                        </div>
+
+                        <div class="info-value">
+                            Section-2
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Roll No.
+                        </div>
+
+                        <div class="info-value">
+                            23101030089
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Application No.
+                        </div>
+
+                        <div class="info-value">
+                            UG2337482
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Programme
+                        </div>
+
+                        <div class="info-value">
+                            Integrated Bachelor of Business Administration -
+                            Bachelor of Law (Honours) [GSOL103]
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Summer Term
+                        </div>
+
+                        <div class="info-value">
+                            ₹1,03,700
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-label">
+                            Last Date
+                        </div>
+
+                        <div class="info-value">
+                            22 August, 2026 (Confirm by ERP)
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEE SUMMARY
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+            Fee Summary
+        </div>
+
+
+        <div class="fee-grid">
+
+
+            <div class="fee-card">
+
+                <h4>Academic</h4>
+
+                <div class="amount">
+                    ₹0
+                </div>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <h4>Academic Miscellaneous</h4>
+
+                <div class="amount">
+                    ₹0
+                </div>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <h4>Hostel</h4>
+
+                <div class="amount">
+                    ₹0
+                </div>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <h4>Hostel Miscellaneous</h4>
+
+                <div class="amount">
+                    ₹0
+                </div>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <h4>Summer Term VIIth</h4>
+
+                <div class="amount">
+                    ₹1,03,700
+                </div>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <h4>Examination</h4>
+
+                <div class="amount">
+                    ₹40,000
+                </div>
+
+            </div>
+
+
+            <div class="fee-card highlight">
+
+                <h4>
+                    Total Outstanding Amount
+                </h4>
+
+                <div class="amount">
+                    ₹1,43,700
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEE BILL
+    ========================= -->
+
+    <section class="bill-section">
+
+
+        <div class="bill-header">
+
+            <h3>
+                Fee Statement / Bill
+            </h3>
+
+            <span>
+                Academic Session: 2026-27
+            </span>
+
+        </div>
+
+
+        <div class="bill">
+
+
+            <table class="bill-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th style="width:70px;">
+                            S.No.
+                        </th>
+
+                        <th>
+                            Particulars
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td>
+                            1
+                        </td>
+
+                        <td>
+                            Examination Fee
+                        </td>
+
+                        <td>
+                            ₹40,000
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            2
+                        </td>
+
+                        <td>
+                            Summer Term VIIth
+                        </td>
+
+                        <td>
+                            ₹1,03,700
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            3
+                        </td>
+
+                        <td>
+                            Additional / Other Fee
+                        </td>
+
+                        <td>
+                            ₹0
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            4
+                        </td>
+
+                        <td>
+                            Discount - Moot Court Prize
+                        </td>
+
+                        <td class="discount">
+                            - ₹27,000
+                        </td>
+
+                    </tr>
+
+
+                    <tr class="total-row">
+
+                        <td colspan="2">
+                            Total Payable Fee
+                        </td>
+
+                        <td>
+                            ₹1,16,700
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- =========================
+                 PAYMENT
+            ========================= -->
+
+            <div class="payment-area">
+
+                <div class="payment-note">
+
+                    Please verify the fee details before proceeding
+                    with payment.
+
+                </div>
+
+
+                <button
+                    class="paybtn"
+                    onclick="generateQR()"
+                >
+                    Pay ₹1,16,700
+                </button>
+
+
+                <!-- QR -->
+
+                <div id="qrbox">
+
+                    <h3>
+                        Scan & Pay
+                    </h3>
+
+                    <img
+                        id="qrimg"
+                        alt="UPI Payment QR Code"
+                    >
+
+                    <p>
+                        Scan this QR code using your preferred
+                        UPI application.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTICE -->
+
+            <div class="notice">
+
+                <strong>Important:</strong>
+                Please ensure that the payment amount and student
+                details are correct before completing the transaction.
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-left">
+
+            <strong>Galgotias University</strong><br>
+
+            Student Fee Management System<br>
+
+            Online Student Services Portal
+
+        </div>
+
+
+        <div class="footer-right">
+
+            For assistance, please contact the University
+            Student Services / Accounts Department.<br>
+
+            This portal is intended for student fee-related services.
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Galgotias University. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function generateQR(){
+
+    /*
+        Final payable amount.
+        This matches the Total Payable Fee
+        displayed on the bill.
+    */
+
+    let totalAmount = 116700;
+
+
+    /*
+        UPI payment information
+    */
+
+    let upi =
+        "upi://pay" +
+        "?pa=9599862326-2@ybl" +
+        "&pn=FeePayment" +
+        "&am=" + totalAmount +
+        "&cu=INR";
+
+
+    /*
+        Generate QR image
+    */
+
+    let qr =
+        "https://api.qrserver.com/v1/create-qr-code/" +
+        "?size=250x250" +
+        "&data=" +
+        encodeURIComponent(upi);
+
+
+    /*
+        Display QR
+    */
+
+    document.getElementById("qrimg").src = qr;
+
+    document.getElementById("qrbox").style.display = "block";
+
+    /*
+        Scroll smoothly to QR
+    */
+
+    document.getElementById("qrbox").scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
